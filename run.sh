@@ -24,16 +24,16 @@ fi
 # check if this event is a build or deploy
 if [ -n "$DEPLOY" ]; then
   # its a deploy!
-  export ACTION="deploy ($WERCKER_DEPLOYTARGET_NAME)"
+  export ACTION="deploy of package $PKG_DIR"
   export ACTION_URL=$WERCKER_DEPLOY_URL
 else
   # its a build!
-  export ACTION="build"
+  export ACTION="build of package $PKG_DIR"
   export ACTION_URL=$WERCKER_BUILD_URL
 fi
 
-export MESSAGE="<$ACTION_URL|$ACTION> for $WERCKER_APPLICATION_NAME by $WERCKER_STARTED_BY has $WERCKER_RESULT on branch $WERCKER_GIT_BRANCH"
-export FALLBACK="$ACTION for $WERCKER_APPLICATION_NAME by $WERCKER_STARTED_BY has $WERCKER_RESULT on branch $WERCKER_GIT_BRANCH"
+export MESSAGE="<$ACTION_URL|$ACTION> in $WERCKER_APPLICATION_NAME by $WERCKER_STARTED_BY has $WERCKER_RESULT on branch $WERCKER_GIT_BRANCH"
+export FALLBACK="$ACTION in $WERCKER_APPLICATION_NAME by $WERCKER_STARTED_BY has $WERCKER_RESULT on branch $WERCKER_GIT_BRANCH"
 export COLOR="good"
 
 if [ "$WERCKER_RESULT" = "failed" ]; then
