@@ -57,6 +57,7 @@ json=$json"
       {
         \"fallback\": \"$FALLBACK\",
         \"text\": \"$MESSAGE\",
+        \"mrkdwn\": true,
         \"color\": \"$COLOR\"
       }
     ]
