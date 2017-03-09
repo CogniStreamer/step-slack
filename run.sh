@@ -24,21 +24,21 @@ fi
 # check if this event is a build or deploy
 if [ -n "$DEPLOY" ]; then
   # its a deploy!
-  export ACTION="deploy of package $PKG_DIR"
+  export ACTION="deploy"
   export ACTION_URL=$WERCKER_DEPLOY_URL
 else
   # its a build!
-  export ACTION="build of package $PKG_DIR"
+  export ACTION="build"
   export ACTION_URL=$WERCKER_BUILD_URL
 fi
 
-export MESSAGE="<$ACTION_URL|$ACTION> in $WERCKER_APPLICATION_NAME by $WERCKER_STARTED_BY has $WERCKER_RESULT on branch $WERCKER_GIT_BRANCH"
-export FALLBACK="$ACTION in $WERCKER_APPLICATION_NAME by $WERCKER_STARTED_BY has $WERCKER_RESULT on branch $WERCKER_GIT_BRANCH"
+export MESSAGE="<$ACTION_URL|$ACTION> of package *$PKG_DIR* ($WERCKER_APPLICATION_NAME) by $WERCKER_STARTED_BY has *$WERCKER_RESULT* on `$WERCKER_GIT_BRANCH`"
+export FALLBACK="$ACTION of package *$PKG_DIR* ($WERCKER_APPLICATION_NAME) by $WERCKER_STARTED_BY has *$WERCKER_RESULT* on `$WERCKER_GIT_BRANCH`"
 export COLOR="good"
 
 if [ "$WERCKER_RESULT" = "failed" ]; then
-  export MESSAGE="$MESSAGE at step: $WERCKER_FAILED_STEP_DISPLAY_NAME"
-  export FALLBACK="$FALLBACK at step: $WERCKER_FAILED_STEP_DISPLAY_NAME"
+  export MESSAGE="$MESSAGE at step: *$WERCKER_FAILED_STEP_DISPLAY_NAME*"
+  export FALLBACK="$FALLBACK at step: *$WERCKER_FAILED_STEP_DISPLAY_NAME*"
   export COLOR="danger"
 fi
 
