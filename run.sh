@@ -30,7 +30,7 @@ elif [ "$WERCKER_SLACK_NOTIFIER_ACTION" = "publish" ]; then
   export ACTION_URL="https://www.npmjs.com/package/$WERCKER_SLACK_NOTIFIER_PKG_NAME"
 else
   export ACTION="build"
-  export ACTION_URL=$WERCKER_BUILD_URL
+  export ACTION_URL=$WERCKER_RUN_URL
 fi
 
 export MESSAGE="<$ACTION_URL|$ACTION> of package *$PKG_DIR* ($WERCKER_APPLICATION_NAME) by $WERCKER_STARTED_BY has *$WERCKER_RESULT* on \`$WERCKER_GIT_BRANCH\`"
