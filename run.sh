@@ -25,7 +25,7 @@ fi
 if [ "$WERCKER_SLACK_NOTIFIER_ACTION" = "deploy" ]; then
   export ACTION="deploy"
   export ACTION_URL=$WERCKER_DEPLOY_URL
-if [ "$WERCKER_SLACK_NOTIFIER_ACTION" = "publish" ]; then
+elif [ "$WERCKER_SLACK_NOTIFIER_ACTION" = "publish" ]; then
   export ACTION="publish"
   export ACTION_URL="https://www.npmjs.com/package/$WERCKER_SLACK_NOTIFIER_PKG_NAME"
 else
