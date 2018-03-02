@@ -23,11 +23,12 @@ fi
 
 # check if this event is a build or deploy
 if [ "$WERCKER_SLACK_NOTIFIER_ACTION" = "deploy" ]; then
-  # its a deploy!
   export ACTION="deploy"
   export ACTION_URL=$WERCKER_DEPLOY_URL
+if [ "$WERCKER_SLACK_NOTIFIER_ACTION" = "publish" ]; then
+  export ACTION="publish"
+  export ACTION_URL="https://www.npmjs.com/package/$WERCKER_SLACK_NOTIFIER_PKG_NAME"
 else
-  # its a build!
   export ACTION="build"
   export ACTION_URL=$WERCKER_BUILD_URL
 fi
